@@ -30,14 +30,13 @@
   }
 }
 
-
 .modal-show {
-  animation: modal-show 0.3s ease-in-out; 
+  animation: modal-show 0.3s ease-in-out;
   animation-fill-mode: forwards;
 }
 
 .modal-hide {
-  animation: modal-hide 0.3s ease-in-out; 
+  animation: modal-hide 0.3s ease-in-out;
   animation-fill-mode: forwards;
 }
 
@@ -46,7 +45,7 @@
 }
 
 .modal-title {
-  font-family: 'Lilita One';
+  font-family: "Lilita One";
   text-align: center;
   color: $color-light;
   font-size: 35px;
@@ -74,14 +73,14 @@
 
 .modal-image-box {
   width: 50%;
-  @include flex(center,center);
+  @include flex(center, center);
 
   @include mobile-600 {
     width: 100%;
   }
 
   .modal-image {
-    position:relative;
+    position: relative;
 
     .man-modal {
       width: 220px;
@@ -90,13 +89,13 @@
         width: 180px;
       }
     }
-  
+
     .halo-modal {
       width: 220px;
       position: absolute;
       top: 0;
-      left:0;
-      opacity:0;
+      left: 0;
+      opacity: 0;
 
       @include laptop-950 {
         width: 180px;
@@ -105,12 +104,9 @@
 
     .halo-modal-show {
       animation: halo-modal-show 1s ease-in-out;
-      animation-fill-mode: forwards ;
+      animation-fill-mode: forwards;
       animation-delay: 0.5s;
-        
-      
     }
-
   }
 }
 
@@ -129,14 +125,14 @@
   // margin-bottom: 50px;
 
   .answer-title {
-    font-family: 'Signika';
+    font-family: "Signika";
     font-size: 25px;
     color: $color-light;
     text-shadow: 0px 0px 3px black;
   }
 
   .correct-answer {
-    font-family: 'Lilita One';
+    font-family: "Lilita One";
     font-size: 35px;
     color: $color-light;
     margin-top: 20px;
@@ -160,7 +156,7 @@
   cursor: pointer;
   transition: all 0.4s ease-in-out;
   color: $color-main-bg;
-  font-family: 'Lilita One';
+  font-family: "Lilita One";
   font-size: 20px;
   margin-top: 20px;
 
@@ -168,23 +164,16 @@
     margin-top: 40px;
   }
 
-
   &:hover {
     background-color: $color-main-bg;
     color: $color-light;
   }
-
 }
-
-
-
-
-
 
 @keyframes modal-show {
   from {
     transform: scale(0);
-  } 
+  }
   to {
     transform: scale(1);
   }
@@ -193,7 +182,7 @@
 @keyframes modal-hide {
   from {
     transform: scale(1);
-  } 
+  }
   to {
     transform: scale(0);
   }
@@ -202,7 +191,7 @@
 @keyframes halo-modal-show {
   from {
     opacity: 0;
-  } 
+  }
   to {
     opacity: 1;
   }

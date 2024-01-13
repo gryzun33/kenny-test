@@ -1,3 +1,3 @@
-import { Main } from "./js/classes/Main.js";
+import { Main } from './js/classes/Main';
 
 const main = new Main();
