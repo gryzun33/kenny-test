@@ -1,10 +1,11 @@
-import questions from '../data/questions';
-import createHTMLElement from '../utils/createHTMLElement';
+import questions from '../data/questions.js';
+import createHTMLElement from '../utils/createHTMLElement.js';
 
 export default class Question {
   constructor(currInd, parent) {
     this.hint = questions[currInd].question;
     this.answer = questions[currInd].answer;
+    console.log('Answer=', this.answer);
     this.letters = [];
     this.maxGuesses = 6;
     this.createView(parent);
@@ -16,7 +17,7 @@ export default class Question {
     const answerElem = createHTMLElement('div', 'answer-box', questionInner);
 
     for (let i = 0; i < this.answer.length; i += 1) {
-      const letterBox = createHTMLElement('div', 'letter-box', answerElem);
+      const letterBox = createHTMLElement('div', 'letter-box letter-border', answerElem);
       const letterObj = {
         letter: '',
         elem: letterBox,
@@ -25,10 +26,10 @@ export default class Question {
     }
 
     const hintElem = createHTMLElement('div', 'hint', questionInner);
-    hintElem.innerText = `Hint: ${this.hint}?`;
+    hintElem.innerText = `${this.hint}`;
     const incorrGuesses = createHTMLElement('div', 'guesses', questionInner);
     const guessText = createHTMLElement('p', 'guess-text', incorrGuesses);
-    guessText.innerHTML = 'Incorrect guesses:&nbsp;&nbsp;';
+    guessText.innerHTML = `Incorrect guesses:&nbsp;&nbsp;`;
     this.guessCountElem = createHTMLElement('p', 'guess-count', incorrGuesses);
     this.guessCountElem.innerText = '0';
     const guessMaxElem = createHTMLElement('p', 'guess-max', incorrGuesses);
@@ -42,6 +43,7 @@ export default class Question {
   openLetter(ind) {
     this.letters[ind].letter = this.answer[ind];
     this.letters[ind].elem.innerText = this.answer[ind];
+    this.letters[ind].elem.classList.remove('letter-border');
   }
 
   checkWord() {

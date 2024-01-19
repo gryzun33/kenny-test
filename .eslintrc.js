@@ -19,5 +19,15 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  rules: {},
+  rules: {
+    'no-console': 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        js: 'never',
+        mjs: 'never',
+      },
+    ],
+  },
 };

@@ -5,49 +5,25 @@
 }
 
 body {
+  @include flex(center, center);
   background-color: $color-main-bg;
   min-height: 100vh;
-  overflow-y: scroll;
-  @include flex(center, center);
   position: relative;
-  // padding: 30px;
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  // display: none;
-  background-color: rgba(0, 0, 0, 0.4);
-  transition: opacity 0.5s ease-in-out;
-
-  @include flex(center, center);
-}
-
-.overlay-show {
-  z-index: 1;
-  opacity: 1;
 }
 
 .wrapper {
-  // margin-left: auto;
-  // margin-right: auto;
-  margin: 30px;
-  max-width: 1100px;
+  margin: 30px 70px;
+  max-width: 1300px;
   width: 100%;
-
   height: auto;
-  // max-height: 900px;
+
   @include flex-column(normal, center);
   padding: 50px;
   border-radius: 20px;
   box-shadow: 0px 0px 10px 1px $color-light;
 
   @include desktop-1100 {
+    margin: 30px;
     padding: 50px 30px;
   }
 
@@ -56,7 +32,6 @@ body {
   }
 
   @include tablet-800 {
-    // padding: 0;
     margin: 0;
     border-radius: 0;
     box-shadow: none;
@@ -69,12 +44,10 @@ body {
 
 .title {
   font-family: "Lilita One";
-  font-size: 50px;
+  font-size: 45px;
   color: $color-key;
   margin: 0;
   text-shadow: 0px 0px 3px black;
-
-  border: 1px;
 
   @include tablet-800 {
     font-size: 35px;
@@ -87,18 +60,21 @@ body {
 
 .main {
   width: 100%;
-  // height: auto;
   max-height: 700px;
-  margin-top: 50px;
+  margin-top: 70px;
   position: relative;
 
-  @include flex-wrap(normal, normal);
-  // justify-content: space-between;
+  @include flex-wrap(normal, space-around);
   flex-direction: column;
+
+  @include desktop-1100 {
+    margin-top: 50px;
+  }
 
   @include laptop-950 {
     flex-direction: row;
     justify-content: space-between;
+    align-content: normal;
   }
 
   @include tablet-800 {
@@ -111,15 +87,12 @@ body {
 
   @include mobile-500 {
     margin-top: 30px;
-    // height: 650px;
-    // height: 100%;
     justify-content: space-between;
   }
 }
 
 .gallows-box {
   order: 1;
-  // grid-area: gallows;
   width: 320px;
   position: relative;
 
@@ -138,7 +111,7 @@ body {
   }
 
   @include mobile-500 {
-    width: 200px;
+    width: 180px;
   }
 
   .gallows {
@@ -146,20 +119,14 @@ body {
   }
 
   .hangman {
-    // width: 320px;
     width: 100%;
     position: absolute;
     top: 0;
-
-    // @include laptop-1024 {
-    //   width: 270px;
-    // }
   }
 
   .body-part {
     width: 100%;
     position: absolute;
-    // z-index: 2;
   }
 
   .halo {
@@ -178,12 +145,12 @@ body {
 }
 
 .question-box {
-  order: 2;
-  // grid-area: question;
   @include flex(center, center);
+  order: 2;
   align-self: center;
   width: 500px;
   height: 250px;
+
   @include laptop-950 {
     width: 450px;
   }
@@ -198,38 +165,43 @@ body {
   }
 
   .question {
-    // align-self: center;
-    // height: 250px;
-
     @include flex-column(center, center);
     width: 100%;
 
     .answer-box {
       width: 100%;
       @include flex(center);
-      gap: 15px;
+      gap: 10px;
 
       @include mobile-600 {
-        gap: 10px;
+        gap: 7px;
       }
 
       .letter-box {
         @include flex(center, center);
         width: 40px;
         height: 40px;
-        border-bottom: 3px solid $color-secondary;
         color: $color-light;
         font-size: 35px;
         font-family: "Lilita One";
+        text-shadow: 0px 0px 3px black;
+        flex: none;
 
         @include mobile-600 {
           width: 7%;
           font-size: 30px;
-          border-bottom: 2px solid $color-secondary;
         }
 
         @include mobile-500 {
           font-size: 25px;
+        }
+      }
+
+      .letter-border {
+        border-bottom: 3px solid $color-secondary;
+
+        @include mobile-600 {
+          border-bottom: 2px solid $color-secondary;
         }
       }
     }
@@ -237,49 +209,50 @@ body {
     .hint {
       color: $color-light;
       font-size: 30px;
-
       font-family: "Signika";
       margin-top: 40px;
       text-align: center;
+      text-shadow: 0px 0px 3px black;
+      height: 105px;
+      @include flex(center, center);
 
       @include desktop-1100 {
         font-size: 25px;
+        height: 90px;
       }
 
       @include mobile-600 {
         margin-top: 30px;
         font-size: 20px;
+        height: 65px;
       }
 
       @include mobile-500 {
         font-size: 18px;
         margin-top: 20px;
+        height: 65px;
       }
     }
 
     .guesses {
       color: $color-light;
-      font-size: 30px;
-
+      font-size: 25px;
       font-family: "Signika";
       margin-top: 30px;
+      text-shadow: 0px 0px 3px black;
       @include flex;
       @include desktop-1100 {
-        font-size: 25px;
+        font-size: 20px;
       }
 
       @include mobile-600 {
-        font-size: 20px;
+        font-size: 18px;
         margin-top: 20px;
       }
 
       @include mobile-500 {
-        font-size: 18px;
+        font-size: 16px;
       }
-
-      // .guess-text {
-      //   width: 250px;
-      // }
 
       .guess-count {
         width: 20px;
@@ -290,7 +263,7 @@ body {
       }
 
       .guess-max {
-        width: 40px;
+        width: 30px;
         @include mobile-600 {
           width: 25px;
         }
@@ -306,7 +279,7 @@ body {
 
 .keyboard-box {
   order: 3;
-  // grid-area: keyboard;
+
   padding-top: 40px;
   align-self: center;
 
@@ -328,6 +301,7 @@ body {
     @include mobile-600 {
       width: 90%;
       gap: 8px;
+      margin-top: 20px;
     }
 
     @include mobile-500 {
@@ -335,14 +309,6 @@ body {
       gap: 7px;
     }
   }
-
-  // @include desktop-1100 {
-  //   padding: 40px 15px 0 15px;
-  // }
-
-  // @include laptop-1024 {
-  //   padding: 40px 120px 0 120px;
-  // }
 
   .key {
     width: 45px;
@@ -353,12 +319,18 @@ body {
     font-size: 35px;
     font-family: "Lilita One";
     text-align: center;
+    transition: transform 0.3s ease-in-out;
     cursor: pointer;
-    // opacity: 0.5;
 
     &:disabled {
       pointer-events: none;
       opacity: 0.5;
+    }
+
+    @media (hover: hover) {
+      &:hover {
+        transform: scale(1.05);
+      }
     }
 
     @include mobile-600 {
